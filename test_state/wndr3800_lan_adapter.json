@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-30",
+  "purpose": "Local Windows RJ45 adapter connected to the WNDR3800 LAN port.",
+  "adapter": {
+    "interface_alias": "Ethernet",
+    "interface_description": "Realtek PCIe GBE Family Controller",
+    "interface_guid": "{BCD7F534-AC26-48D6-8DAC-CCF80027BE26}",
+    "mac_address": "00-01-2E-A4-45-8A",
+    "pnp_device_id": "PCI\\VEN_10EC&DEV_8168&SUBSYS_816819DA&REV_0C\\01000000684CE00000",
+    "observed_interface_index": 16,
+    "observed_link_speed": "1 Gbps"
+  },
+  "connection_observed": {
+    "local_ipv4": "192.168.10.164",
+    "subnet_cidr": "192.168.10.0/24",
+    "default_gateway": "192.168.10.1",
+    "router_neighbor_mac": "0A-BD-43-B1-83-BD",
+    "router_neighbor_state": "Reachable",
+    "http_port_80_reachable": true,
+    "ssh_port_22_reachable": true,
+    "icmp_echo_succeeded": false
+  },
+  "identity_policy": [
+    "Prefer interface_guid when selecting the adapter programmatically.",
+    "Fall back to interface_alias and mac_address if the GUID is unavailable.",
+    "Do not rely on observed_interface_index because Windows may renumber it."
+  ]
+}

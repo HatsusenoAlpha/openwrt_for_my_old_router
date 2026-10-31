@@ -1,0 +1,7 @@
+# Merge this entry into the appropriate dsh patch layer after reviewing
+# the existing $DSH_HOME/cordis.patch.yml or profile cordis.patch.yml.
+- id: llm-deepseek
+  name: '@deepseek-ai/dsh-llm-deepseek-api-key'
+  config:
+    reasoningEffort: high
+    apiKeyEnv: DEEPSEEK_API_KEY

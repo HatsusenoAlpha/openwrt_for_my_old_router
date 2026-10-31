@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Name":  "Bluetooth Network Connection",
+        "Guid":  "{4D1DD58A-88EF-4A34-A5B7-70F20E51F799}",
+        "SharingEnabled":  false,
+        "SharingConnectionType":  0
+    },
+    {
+        "Name":  "Wi-Fi",
+        "Guid":  "{B24D21B6-4511-4CC6-89BB-95B93DFC5AC4}",
+        "SharingEnabled":  false,
+        "SharingConnectionType":  0
+    },
+    {
+        "Name":  "Ethernet",
+        "Guid":  "{BCD7F534-AC26-48D6-8DAC-CCF80027BE26}",
+        "SharingEnabled":  false,
+        "SharingConnectionType":  0
+    },
+    {
+        "Name":  "Ethernet 3",
+        "Guid":  "{9D81C88F-F892-4F50-A0FB-FD6D0E39C82C}",
+        "SharingEnabled":  false,
+        "SharingConnectionType":  0
+    },
+    {
+        "Name":  "vEthernet (Default Switch)",
+        "Guid":  "{5820DBCD-E5D7-4616-ABD3-5D991A8A4D8A}",
+        "SharingEnabled":  false,
+        "SharingConnectionType":  0
+    }
+]

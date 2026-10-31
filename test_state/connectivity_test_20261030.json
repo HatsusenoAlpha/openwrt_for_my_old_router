@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "tested_on": "2026-10-30",
+  "router": {
+    "lan_ipv4": "192.168.10.1/24",
+    "wan_ipv4": "192.168.137.154/24",
+    "wan_gateway": "192.168.137.1",
+    "wan_dns": "192.168.137.1",
+    "wan_mac": "08-BD-43-B1-83-BE"
+  },
+  "local_test_adapter": {
+    "interface_alias": "Ethernet",
+    "interface_guid": "{BCD7F534-AC26-48D6-8DAC-CCF80027BE26}",
+    "ipv4": "192.168.10.164/24",
+    "default_gateway": "192.168.10.1"
+  },
+  "switch_and_links": {
+    "rtl8366_smi_loaded": true,
+    "rtl8366s_loaded": true,
+    "swconfig_switch": "switch0 - rtl8366s",
+    "eth1_present": true,
+    "eth1_up": true,
+    "eth0_up": true,
+    "wlan0_up": true,
+    "wlan1_up": true
+  },
+  "wan_ipv4_dhcp": {
+    "success": true,
+    "protocol": "dhcp",
+    "lease_time_seconds": 604800,
+    "default_route": "0.0.0.0/0 via 192.168.137.1 dev eth1"
+  },
+  "router_originated_tests": {
+    "ping_1_1_1_1_success": true,
+    "ping_packet_loss_percent": 0,
+    "dns_resolve_openwrt_org_success": true,
+    "http_204_success": true,
+    "https_204_success": true,
+    "wget_https_openwrt_org_success": true
+  },
+  "lan_to_wan_nat_tests": {
+    "forced_source_ipv4": "192.168.10.164",
+    "selected_interface": "Ethernet",
+    "selected_gateway": "192.168.10.1",
+    "dns_via_192_168_10_1_success": true,
+    "ping_1_1_1_1_success": true,
+    "ping_packet_loss_percent": 0,
+    "luci_http_status": 200,
+    "https_openwrt_org_status": 200,
+    "https_204_endpoint_status": 204
+  },
+  "ipv6": {
+    "lan_ula_assigned_to_client": true,
+    "lan_ula": "fdda:ea5b:d15f::/64",
+    "wan_global_ipv6": false,
+    "wan_ipv6_default_route": false,
+    "note": "Windows ICS provides IPv4 DHCP/NAT only and does not advertise IPv6 RA, DHCPv6, or a delegated prefix."
+  },
+  "usb_printer_stack": {
+    "usbcore_loaded": true,
+    "usblp_loaded": true,
+    "printer_device_attached": false
+  }
+}

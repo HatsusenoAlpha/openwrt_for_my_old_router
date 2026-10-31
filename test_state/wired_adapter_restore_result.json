@@ -1,0 +1,35 @@
+﻿{
+    "Success":  true,
+    "Ethernet":  {
+                     "Addresses":  [
+                                       {
+                                           "IPAddress":  "192.168.6.164",
+                                           "PrefixLength":  24,
+                                           "AddressState":  3
+                                       }
+                                   ],
+                     "Addressing":  "unchanged DHCP",
+                     "Role":  "WNDR3800 LAN"
+                 },
+    "Ethernet3":  {
+                      "Addresses":  [
+
+                                    ],
+                      "Addressing":  "restored to DHCP",
+                      "Role":  "Former temporary WAN upstream"
+                  },
+    "IcsState":  [
+                     {
+                         "Guid":  "{9D81C88F-F892-4F50-A0FB-FD6D0E39C82C}",
+                         "IsIcsPublic":  false,
+                         "IsIcsPrivate":  false
+                     },
+                     {
+                         "Guid":  "{B24D21B6-4511-4CC6-89BB-95B93DFC5AC4}",
+                         "IsIcsPublic":  false,
+                         "IsIcsPrivate":  false
+                     }
+                 ],
+    "Note":  "The physical Ethernet 3 cable remains connected until it is unplugged.",
+    "RestoredAt":  "2026-10-30T23:41:23.4185288+08:00"
+}

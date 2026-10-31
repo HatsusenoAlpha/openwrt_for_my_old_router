@@ -1,0 +1,34 @@
+# Local firmware, Flash backups, and disk images are intentionally not tracked.
+/artifacts/
+/backup/
+/r66s/
+*.bin
+*.img
+*.img.gz
+*.qcow2
+*.trx
+*.chk
+
+# Secrets and local environment.
+.env
+.env.local
+.env.*
+!.env.example
+
+# Agent/runtime state.
+.codex/
+.dsh/
+.git.pre-github-*/
+*.log
+__pycache__/
+*.py[cod]
+
+# Editor and OS files.
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local test failures and temporary output.
+test_state/*error*.txt
+test_state/*launcher_error.txt

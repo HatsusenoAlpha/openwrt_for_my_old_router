@@ -1,0 +1,17 @@
+# Copy this file to:
+#   $CODEX_HOME/profile-deepseek.config.toml
+# Then run:
+#   codex --profile deepseek
+#
+# Codex currently supports only wire_api = "responses" for custom providers.
+# DEEPSEEK_RESPONSES_BASE_URL must point to a Responses-compatible gateway.
+
+model = "YOUR_DEEPSEEK_MODEL_ID"
+model_provider = "deepseek"
+
+[model_providers.deepseek]
+name = "DeepSeek"
+base_url = "https://YOUR_RESPONSES_COMPATIBLE_GATEWAY/v1"
+env_key = "DEEPSEEK_API_KEY"
+wire_api = "responses"
+requires_openai_auth = false

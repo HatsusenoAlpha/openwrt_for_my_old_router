@@ -1,0 +1,12 @@
+#!/bin/sh
+# SSR Plus invokes V2Ray v5 as "v2ray run -config"; V2Fly v4 uses
+# "-config" directly. Keep both command styles working on this router.
+case "$1" in
+	run)
+		shift
+		;;
+	version)
+		exec /usr/bin/v2ray.real -version
+		;;
+esac
+exec /usr/bin/v2ray.real "$@"

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-24T19:30:00+08:00",
+  "purpose": "Merge the external x86_64 task with the Y1 and Y1s tasks into one unattended OpenWrt build plan.",
+  "merge_contract": {
+    "task_set": [
+      "x86_64",
+      "y1",
+      "y1s"
+    ],
+    "recommended_order": [
+      "x86_64",
+      "y1",
+      "y1s"
+    ],
+    "shared_source_root": "/home/chenmo/Software/openwrt/lede",
+    "global_lock": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/openwrt-build.lock",
+    "parallel_policy": "serial",
+    "reason": "All three tasks currently share one OpenWrt source tree and mutate .config and feed package Makefiles.",
+    "completion_policy": "Stop the merged run on the first non-zero task exit unless continue_on_error is explicitly enabled.",
+    "detach_policy": "Detach one parent orchestrator with setsid+nohup. Invoke Y1 and Y1s using their foreground run command so the parent can observe completion.",
+    "avoid": [
+      "Do not run the x86_64, Y1, and Y1s make commands concurrently in the shared source tree.",
+      "Do not launch Y1 and Y1s with their start command from inside an already detached orchestrator; use run.",
+      "Do not delete or overwrite the WNDR3800 .config permanently."
+    ]
+  },
+  "external_task": {
+    "id": "x86_64",
+    "owner": "x86_64 build session",
+    "plan_path_local": "C:/Users/Chen Mo/works/AI Learning/WNDR3800_firmware_compile/x86_64/docs/shadowsocksr_plus_compile_plan.md",
+    "plan_path_remote": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/x86_64-plan/docs/shadowsocksr_plus_compile_plan.md",
+    "target": "x86/64",
+    "integration": "Keep the x86_64 task definition owned by its generating session and add the two tasks below to the same detached, globally serialized orchestrator."
+  },
+  "tasks": [
+    {
+      "id": "y1",
+      "device": "Lenovo Newifi Y1",
+      "target": "ramips/mt7620",
+      "device_token": "lenovo_newifi-y1",
+      "architecture": "mips32le",
+      "network": {
+        "lan_cidr": "192.168.6.0/24",
+        "lan_ip": "192.168.6.1",
+        "broadcast": "192.168.6.255",
+        "dhcp_pool": "192.168.6.100-192.168.6.249"
+      },
+      "entrypoint_remote": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1.sh",
+      "entrypoint_local": "C:/Users/Chen Mo/works/AI Learning/WNDR3800_firmware_compile/y1_y1s/scripts/build-y1.sh",
+      "foreground_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1.sh",
+        "run"
+      ],
+      "standalone_detached_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1.sh",
+        "start"
+      ],
+      "status_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1.sh",
+        "status"
+      ],
+      "base_config": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/configs/y1.previous.config",
+      "feature_fragment": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/configs/y1.features.fragment",
+      "v2ray_package_makefile": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/assets/v2ray-core-mipsel.Makefile",
+      "ssr_plus_makefile": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/assets/luci-app-ssr-plus.Makefile",
+      "state_dir": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1",
+      "log_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1/build.log",
+      "status_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1/status",
+      "rc_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1/rc",
+      "artifact_dir": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/artifacts/y1",
+      "expected_images": [
+        "openwrt-ramips-mt7620-lenovo_newifi-y1-initramfs-kernel.bin",
+        "openwrt-ramips-mt7620-lenovo_newifi-y1-squashfs-sysupgrade.bin",
+        "openwrt-ramips-mt7620-lenovo_newifi-y1.manifest"
+      ],
+      "depends_on": [],
+      "resource_locks": [
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/openwrt-build.lock",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s.lock"
+      ],
+      "restore_after_run": [
+        "/home/chenmo/Software/openwrt/lede/.config",
+        "/home/chenmo/Software/openwrt/lede/feeds/helloworld/v2ray-core/Makefile",
+        "/home/chenmo/Software/openwrt/lede/feeds/helloworld/luci-app-ssr-plus/Makefile"
+      ]
+    },
+    {
+      "id": "y1s",
+      "device": "Lenovo Newifi Y1s",
+      "target": "ramips/mt7620",
+      "device_token": "lenovo_newifi-y1s",
+      "architecture": "mips32le",
+      "network": {
+        "lan_cidr": "192.168.4.0/24",
+        "lan_ip": "192.168.4.1",
+        "broadcast": "192.168.4.255",
+        "dhcp_pool": "192.168.4.100-192.168.4.249"
+      },
+      "entrypoint_remote": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1s.sh",
+      "entrypoint_local": "C:/Users/Chen Mo/works/AI Learning/WNDR3800_firmware_compile/y1_y1s/scripts/build-y1s.sh",
+      "foreground_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1s.sh",
+        "run"
+      ],
+      "standalone_detached_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1s.sh",
+        "start"
+      ],
+      "status_command": [
+        "bash",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/scripts/build-y1s.sh",
+        "status"
+      ],
+      "base_config": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/configs/y1s.previous.config",
+      "feature_fragment": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/configs/y1s.features.fragment",
+      "v2ray_package_makefile": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/assets/v2ray-core-mipsel.Makefile",
+      "ssr_plus_makefile": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/assets/luci-app-ssr-plus.Makefile",
+      "state_dir": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1s",
+      "log_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1s/build.log",
+      "status_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1s/status",
+      "rc_file": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/state/y1s/rc",
+      "artifact_dir": "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s/artifacts/y1s",
+      "expected_images": [
+        "openwrt-ramips-mt7620-lenovo_newifi-y1s-initramfs-kernel.bin",
+        "openwrt-ramips-mt7620-lenovo_newifi-y1s-squashfs-sysupgrade.bin",
+        "openwrt-ramips-mt7620-lenovo_newifi-y1s.manifest"
+      ],
+      "depends_on": [],
+      "resource_locks": [
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/openwrt-build.lock",
+        "/home/chenmo/Software/openwrt/lede/.codex-autobuild/y1-y1s.lock"
+      ],
+      "restore_after_run": [
+        "/home/chenmo/Software/openwrt/lede/.config",
+        "/home/chenmo/Software/openwrt/lede/feeds/helloworld/v2ray-core/Makefile",
+        "/home/chenmo/Software/openwrt/lede/feeds/helloworld/luci-app-ssr-plus/Makefile"
+      ]
+    }
+  ],
+  "merged_orchestrator_pseudocode": [
+    "setsid nohup bash merged-build.sh run > merged.log 2>&1 < /dev/null &",
+    "exec 9>/home/chenmo/Software/openwrt/lede/.codex-autobuild/openwrt-build.lock",
+    "flock 9",
+    "run_x86_64_task",
+    "run y1.foreground_command; fail on non-zero",
+    "run y1s.foreground_command; fail on non-zero",
+    "write merged rc=0 and aggregate artifact paths"
+  ],
+  "preconditions": [
+    "The user explicitly approves compilation.",
+    "The remote xps13 source tree exists and has sufficient free disk.",
+    "The mips32le V2Ray 4.45.2 ZIP exists in dl/ and matches its recorded SHA-256.",
+    "The x86_64 task uses the same global lock when sharing this source tree.",
+    "The WNDR3800 .config and feed Makefiles are backed up before the first task."
+  ],
+  "status_values": [
+    "QUEUED",
+    "RUNNING y1",
+    "RUNNING y1s",
+    "COMPLETED",
+    "FAILED rc=<n>"
+  ]
+}

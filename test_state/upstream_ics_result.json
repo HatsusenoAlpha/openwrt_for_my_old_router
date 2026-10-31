@@ -1,0 +1,13 @@
+﻿{
+    "Success":  true,
+    "PublicInterface":  "Wi-Fi",
+    "PublicGuid":  "{B24D21B6-4511-4CC6-89BB-95B93DFC5AC4}",
+    "PrivateInterface":  "Ethernet 3",
+    "PrivateGuid":  "{9D81C88F-F892-4F50-A0FB-FD6D0E39C82C}",
+    "SharedSubnet":  "192.168.137.0/24",
+    "SharedGateway":  "assigned by ICS when the link becomes active",
+    "DhcpEnabled":  true,
+    "DnsEnabled":  true,
+    "SharedAccessStatus":  4,
+    "CompletedAt":  "2026-10-30T22:00:07.0277280+08:00"
+}

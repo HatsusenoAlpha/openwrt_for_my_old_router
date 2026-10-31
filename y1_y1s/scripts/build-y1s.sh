@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+DEVICE="y1s"
+DEVICE_TOKEN="lenovo_newifi-y1s"
+LAN_IP="192.168.4.1"
+LAN_BROADCAST="192.168.4.255"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TASK_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+BASE_CONFIG="$TASK_DIR/configs/y1s.previous.config"
+source "$SCRIPT_DIR/common.sh"
+autobuild_main "$@"
