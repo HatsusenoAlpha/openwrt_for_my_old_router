@@ -1,0 +1,9 @@
+# The files/ tree is a raw capture of a live router. It contains credentials,
+# password hashes, SSH host keys, ZeroTier identity material, and proxy data.
+/files/
+
+# This checksum manifest fingerprints captured secrets and private identities.
+/SHA256SUMS.txt
+
+# Raw boot-chain dumps are device backup data, not portable build inputs.
+/boot/*.bin

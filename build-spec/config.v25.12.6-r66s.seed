@@ -1,0 +1,51 @@
+# OpenWrt v25.12.6 baseline for Lunzn FastRhino R66S.
+# Merge this seed into the source tree .config, then run `make defconfig`.
+
+# Target and profile
+CONFIG_TARGET_rockchip=y
+CONFIG_TARGET_rockchip_armv8=y
+CONFIG_TARGET_rockchip_armv8_DEVICE_lunzn_fastrhino-r66s=y
+
+# Image layout used by the working R66S installation
+CONFIG_TARGET_KERNEL_PARTSIZE=64
+CONFIG_TARGET_ROOTFS_PARTSIZE=4096
+CONFIG_TARGET_ROOTFS_SQUASHFS=y
+CONFIG_TARGET_SQUASHFS_BLOCK_SIZE=1024
+CONFIG_TARGET_SQUASHFS_COMPRESSION_XZ=y
+CONFIG_TARGET_IMAGES_GZIP=y
+
+# Kernel introspection and RTL8125 support
+CONFIG_KERNEL_IKCONFIG=y
+CONFIG_KERNEL_IKCONFIG_PROC=y
+CONFIG_PACKAGE_kmod-r8125=y
+
+# Base administration and networking
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+CONFIG_PACKAGE_uhttpd=y
+CONFIG_PACKAGE_dropbear=y
+
+# Official-feed packages used by the captured R66S configuration
+CONFIG_PACKAGE_zerotier=y
+CONFIG_PACKAGE_xray-core=y
+CONFIG_PACKAGE_sing-box=y
+CONFIG_PACKAGE_luci-app-ssr-plus=y
+CONFIG_PACKAGE_luci-app-ssr-plus_Nftables_Transparent_Proxy=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_GeoData=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client=y
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-app-zerotier=y
+CONFIG_PACKAGE_samba4-server=y
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_miniupnpd=y
+CONFIG_PACKAGE_luci-app-upnp=y
+
+# External source packages still to be added for the full personal profile:
+# luci-theme-design, luci-app-turboacc, luci-app-adbyby-plus,
+# luci-app-aliyundrive-webdav.
